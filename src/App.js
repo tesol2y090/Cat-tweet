@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import styled from 'styled-components'
+
+const Header = styled.h1`
+  text-align: center;
+`
+const MewForm = styled.form`
+  width: 50%
+  margin: 0 auto;
+`
+const Submit = styled.button`
+  background: #FFB6C1;
+  color: white;
+`
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Header>Meow - Cat tweeter 😸🐈</Header>
+        <MewForm>
+          <label for="name">Name</label>
+          <input class="u-full-width" type="text" id="name" name="name" />
+          <label for="content">Meow</label>
+          <textarea class="u-full-width" type="text-area" id="content" name="content"></textarea>
+          <Submit class="button-primary" type="submit">Send your Meow 😽</Submit>
+        </MewForm>
       </div>
     );
   }
