@@ -28,14 +28,20 @@ function isValid(mew) {
     mew.content && mew.content.toString().trim() !== ""; 
 }
 
+function wirteData(name, content) {
+    database.ref('name/' + name).set({
+        name: name,
+        content: content
+    });
+}
+
 app.post('/mews', (req, res) => {
     if(isValid(req.body)) {
         const mew = {
             name: req.body.name.toString(),
             content: req.body.content.toString()
         }
-        console.log(mew);
-        console.log(database)
+        wirteData(mew.name, mew.content);
     } else {
         res.status(422);
         res.json({
