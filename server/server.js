@@ -2,11 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const firebase = require('firebase')
 
+import configServer from './config';
+
 const config = {
-    apiKey: "AIzaSyDqOpbbA2Zs9Pz-JyljGIL9jMq3IZEhHzU",
-    authDomain: "meowtweet-db058.firebaseapp.com",
-    databaseURL: "https://meowtweet-db058.firebaseio.com",
-    storageBucket: "meowtweet-db058.appspot.com",
+    apiKey: configServer.apiKey,
+    authDomain: configServer.authDomain,
+    databaseURL: configServer.databaseURL,
+    storageBucket: configServer.storageBucket,
 };
 firebase.initializeApp(config);
 const database = firebase.database();

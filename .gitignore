@@ -10,6 +10,7 @@
 
 # production
 /build
+/server/config.json
 
 # misc
 .DS_Store
