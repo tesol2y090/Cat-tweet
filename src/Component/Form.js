@@ -34,7 +34,7 @@ class Form extends Component {
 
   render() {
     return (
-      <MewForm onSubmit={this.Submit} id="mewForm">
+      <MewForm onSubmit={this.Submit} id="mewForm" >
           <label name="name">Name</label>
           <input className="u-full-width" type="text" id="name" name="name"/>
           <label name="content">Meow</label>

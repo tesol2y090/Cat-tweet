@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const firebase = require('firebase')
 
-import configServer from './config';
+const configServer = require('./config.json');
 
 const config = {
     apiKey: configServer.apiKey,
@@ -31,9 +31,11 @@ function isValid(mew) {
 }
 
 function wirteData(name, content) {
-    database.ref('name/' + name).set({
+    const date = new Date();
+    database.ref(name).set({
         name: name,
-        content: content
+        content: content,
+        date: date.toString()
     });
 }
 
@@ -50,7 +52,14 @@ app.post('/mews', (req, res) => {
             message: `Name And Content are required`
         });
     }
-})
+});
+
+app.get('/mews', (req, res) => {
+    database.ref().once('value').then((snapShot) => {
+        const mews = snapShot.val();
+        res.json(mews)
+    })
+});
 
 app.listen(5000, () => {
     console.log('Listen on port 5000');
