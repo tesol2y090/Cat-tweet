@@ -41,15 +41,12 @@ const ContentFont = styled.p`
 class Content extends Component {
 
     render() {
-        // const content = this.props.allMews.content;
-        let content = this.props.allMews;
-        console.log("contentComponent", content.aaa);
+        const {name, date, content} = this.props.allMews;
         return (
                 <Card >
-                   {/* <Header>{name}</Header>
+                   <Header>{name}</Header>
                    <DateFont>{date}</DateFont>
-                   <ContentFont>{content}</ContentFont> */}
-                   content
+                   <ContentFont>{content}</ContentFont>
                 </Card>
         )
     }

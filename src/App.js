@@ -11,24 +11,24 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      allMews: []
-    };
-    console.log("constructor");
-    this.listAllMews();
+    this.state = {};
   }
 
-  async listAllMews() {
-    const allMews = await fetch(API_URL).then(res => res.json());
+  async componentDidMount() {
+    const Mew = await fetch(API_URL).then(res => res.json());
+    let mewArray = []
+    for (const key in Mew) {
+      mewArray.push(Mew[key])
+    }
     this.setState({
-      allMews: allMews
+      allMews: mewArray.reverse()
     });
   }
 
   showContent() {
-    console.log("Show content in app");
-    return true || <Content allMews={this.state.allMews} />
-    // console.log("gang");
+    return this.state.allMews && this.state.allMews.map(mew => (
+      <Content allMews={mew} />
+    ));
   }
 
   render() {
